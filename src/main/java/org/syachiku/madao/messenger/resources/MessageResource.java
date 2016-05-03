@@ -20,4 +20,11 @@ public class MessageResource {
 	public List<Message> getMessages(){
 		return messageService.getAllMessages();
 	}
+	
+	@GET
+	@Path("/test")
+	@Produces(MediaType.APPLICATION_XML)
+	public String test(){
+		return "test";
+	}
 }
