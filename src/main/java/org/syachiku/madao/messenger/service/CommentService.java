@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -31,7 +32,7 @@ public class CommentService {
 		Map<Long, Comment> comments = messages.get(messageId).getComments();
 		Comment comment = comments.get(commentId);
 		if (comment == null){
-			throw new WebApplicationException(response);
+			throw new NotFoundException(response);
 		}
 		return comment;
 	}
