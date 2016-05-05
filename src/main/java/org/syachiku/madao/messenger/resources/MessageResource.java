@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.syachiku.madao.messenger.model.Message;
 import org.syachiku.madao.messenger.resources.beans.MessageFilterBean;
@@ -44,8 +46,12 @@ public class MessageResource {
 	}
 	
 	@POST
-	public Message addMessage(Message message){
-		return messageService.addMessage(message);
+	public Response addMessage(Message message){
+		Message newMessage = messageService.addMessage(message);
+		return Response.status(Status.CREATED).entity(newMessage).build();
+		
+		// First version of addMessage implementation
+		//return messageService.addMessage(message);
 	}
 	
 	@PUT
