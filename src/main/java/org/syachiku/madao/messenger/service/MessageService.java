@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.syachiku.madao.messenger.database.DatabaseClass;
+import org.syachiku.madao.messenger.exception.DataNotFoundException;
 import org.syachiku.madao.messenger.model.Message;
 
 public class MessageService {
@@ -40,7 +41,12 @@ public class MessageService {
 	}
 	
 	public Message getMessage(long id){
-		return messages.get(id);
+		Message message = messages.get(id);
+		if (message == null){
+			throw new DataNotFoundException("Message with id: " + id + " not found");
+		}
+		return message;
+		//return messages.get(id);
 	}
 	
 	public Message addMessage(Message message){
