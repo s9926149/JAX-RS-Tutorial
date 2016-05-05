@@ -7,7 +7,7 @@ import javax.ws.rs.ext.Provider;
 
 import org.syachiku.madao.messenger.model.ErrorMessage;
 
-@Provider
+
 public class GenericExceptionMapper implements ExceptionMapper<Throwable>{
 	@Override
 	public Response toResponse(Throwable exception) {
